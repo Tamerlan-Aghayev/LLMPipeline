@@ -3,7 +3,7 @@ mysql:
   user: "root"
   password: "Tar.32004"
 google:
-  api_key: "AIzaSyCzjl6vtHtg0Ey9qXY8x7AzWWaEBV7ncbs"
-schemas_to_extract:
+  api_key: "api_key"
+schemas_to_extract: #optional, it is for specifying schemas for operation
   - "schema1"
   - "schema2"

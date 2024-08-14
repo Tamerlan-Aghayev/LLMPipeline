@@ -2,15 +2,12 @@ import json
 import google.generativeai as genai
 from dotenv import load_dotenv
 
-# Load environment variables
 load_dotenv()
 
 class QueryGenerator:
     def __init__(self, api_key):
-        # Configure Genai with the API key from environment variables
         genai.configure(api_key=api_key)
         
-        # Use a model that is accessible in the free version, like 'gemini-1' or 'chat-bison'
         self.model = genai.GenerativeModel('gemini-pro')
 
     def generate_sql_query(self, user_query, semantic_results):
@@ -51,6 +48,5 @@ class QueryGenerator:
                                 """
 
 
-        # Use the chat method to generate the corrected SQL query
         response = self.model.generate_content([correction_prompt])
         return response.text.strip()

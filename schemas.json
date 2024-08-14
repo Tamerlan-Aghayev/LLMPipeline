@@ -1,4 +1,1062 @@
 {
+  "olympus": {
+    "tables": [
+      {
+        "name": "authorities",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "authority",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "comments",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "comment",
+            "type": "TEXT"
+          },
+          {
+            "name": "parent_comment_id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "publish_time",
+            "type": "DATETIME"
+          },
+          {
+            "name": "user_id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "video_id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "reply_count",
+            "type": "INT"
+          }
+        ]
+      },
+      {
+        "name": "courses",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "amount",
+            "type": "DECIMAL"
+          },
+          {
+            "name": "average_rating",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "currency",
+            "type": "ENUM"
+          },
+          {
+            "name": "description",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "duration_in_minutes",
+            "type": "INT"
+          },
+          {
+            "name": "last_update",
+            "type": "DATE"
+          },
+          {
+            "name": "name",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "pictureurl",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "release_date",
+            "type": "DATE"
+          },
+          {
+            "name": "subject",
+            "type": "ENUM"
+          },
+          {
+            "name": "teacher_id",
+            "type": "BIGINT"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_blob_triggers",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "BLOB_DATA",
+            "type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_calendars",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "CALENDAR_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "CALENDAR",
+            "type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_cron_triggers",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "CRON_EXPRESSION",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TIME_ZONE_ID",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_fired_triggers",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "ENTRY_ID",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "INSTANCE_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "FIRED_TIME",
+            "type": "BIGINT"
+          },
+          {
+            "name": "SCHED_TIME",
+            "type": "BIGINT"
+          },
+          {
+            "name": "PRIORITY",
+            "type": "INT"
+          },
+          {
+            "name": "STATE",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "IS_NONCONCURRENT",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "REQUESTS_RECOVERY",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_job_details",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "DESCRIPTION",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_CLASS_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "IS_DURABLE",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "IS_NONCONCURRENT",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "IS_UPDATE_DATA",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "REQUESTS_RECOVERY",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_DATA",
+            "type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_locks",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "LOCK_NAME",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_paused_trigger_grps",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_GROUP",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_scheduler_state",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "INSTANCE_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "LAST_CHECKIN_TIME",
+            "type": "BIGINT"
+          },
+          {
+            "name": "CHECKIN_INTERVAL",
+            "type": "BIGINT"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_simple_triggers",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "REPEAT_COUNT",
+            "type": "BIGINT"
+          },
+          {
+            "name": "REPEAT_INTERVAL",
+            "type": "BIGINT"
+          },
+          {
+            "name": "TIMES_TRIGGERED",
+            "type": "BIGINT"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_simprop_triggers",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "STR_PROP_1",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "STR_PROP_2",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "STR_PROP_3",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "INT_PROP_1",
+            "type": "INT"
+          },
+          {
+            "name": "INT_PROP_2",
+            "type": "INT"
+          },
+          {
+            "name": "LONG_PROP_1",
+            "type": "BIGINT"
+          },
+          {
+            "name": "LONG_PROP_2",
+            "type": "BIGINT"
+          },
+          {
+            "name": "DEC_PROP_1",
+            "type": "DECIMAL"
+          },
+          {
+            "name": "DEC_PROP_2",
+            "type": "DECIMAL"
+          },
+          {
+            "name": "BOOL_PROP_1",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "BOOL_PROP_2",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_triggers",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "DESCRIPTION",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "NEXT_FIRE_TIME",
+            "type": "BIGINT"
+          },
+          {
+            "name": "PREV_FIRE_TIME",
+            "type": "BIGINT"
+          },
+          {
+            "name": "PRIORITY",
+            "type": "INT"
+          },
+          {
+            "name": "TRIGGER_STATE",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_TYPE",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "START_TIME",
+            "type": "BIGINT"
+          },
+          {
+            "name": "END_TIME",
+            "type": "BIGINT"
+          },
+          {
+            "name": "CALENDAR_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "MISFIRE_INSTR",
+            "type": "SMALLINT"
+          },
+          {
+            "name": "JOB_DATA",
+            "type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "ratings",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "course_id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "description",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "publish_time",
+            "type": "DATETIME"
+          },
+          {
+            "name": "rating",
+            "type": "DOUBLE"
+          },
+          {
+            "name": "user_id",
+            "type": "BIGINT"
+          }
+        ]
+      },
+      {
+        "name": "refresh_tokens",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "eat",
+            "type": "DATETIME"
+          },
+          {
+            "name": "iat",
+            "type": "DATETIME"
+          },
+          {
+            "name": "token",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "username",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "valid",
+            "type": "BIT"
+          }
+        ]
+      },
+      {
+        "name": "subscriptions",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "billing_cycle",
+            "type": "ENUM"
+          },
+          {
+            "name": "cancellation_date",
+            "type": "DATE"
+          },
+          {
+            "name": "course_id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "end_date",
+            "type": "DATE"
+          },
+          {
+            "name": "next_billing_date",
+            "type": "DATE"
+          },
+          {
+            "name": "start_date",
+            "type": "DATE"
+          },
+          {
+            "name": "status",
+            "type": "ENUM"
+          },
+          {
+            "name": "user_id",
+            "type": "BIGINT"
+          }
+        ]
+      },
+      {
+        "name": "topics",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "course_id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "duration_in_minutes",
+            "type": "INT"
+          },
+          {
+            "name": "name",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "teacher_id",
+            "type": "BIGINT"
+          }
+        ]
+      },
+      {
+        "name": "user_authority",
+        "columns": [
+          {
+            "name": "user_id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "authority_id",
+            "type": "BIGINT"
+          }
+        ]
+      },
+      {
+        "name": "users",
+        "columns": [
+          {
+            "name": "user_type",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "account_non_expired",
+            "type": "BIT"
+          },
+          {
+            "name": "account_non_locked",
+            "type": "BIT"
+          },
+          {
+            "name": "credentials_non_expired",
+            "type": "BIT"
+          },
+          {
+            "name": "description",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "enabled",
+            "type": "BIT"
+          },
+          {
+            "name": "full_name",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "password",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "profile_picture",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "username",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "videos",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "course_id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "description",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "name",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "publish_time",
+            "type": "DATE"
+          },
+          {
+            "name": "subscription_required",
+            "type": "BIT"
+          },
+          {
+            "name": "teacher_id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "topic_id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "video_length_in_minutes",
+            "type": "INT"
+          },
+          {
+            "name": "videourl",
+            "type": "VARCHAR"
+          }
+        ]
+      }
+    ]
+  },
+  "quartz_scheduler": {
+    "tables": [
+      {
+        "name": "qrtz_blob_triggers",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "BLOB_DATA",
+            "type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_calendars",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "CALENDAR_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "CALENDAR",
+            "type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_cron_triggers",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "CRON_EXPRESSION",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TIME_ZONE_ID",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_fired_triggers",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "ENTRY_ID",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "INSTANCE_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "FIRED_TIME",
+            "type": "BIGINT"
+          },
+          {
+            "name": "SCHED_TIME",
+            "type": "BIGINT"
+          },
+          {
+            "name": "PRIORITY",
+            "type": "INT"
+          },
+          {
+            "name": "STATE",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "IS_NONCONCURRENT",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "REQUESTS_RECOVERY",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_job_details",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "DESCRIPTION",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_CLASS_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "IS_DURABLE",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "IS_NONCONCURRENT",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "IS_UPDATE_DATA",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "REQUESTS_RECOVERY",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_DATA",
+            "type": "BLOB"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_job_listeners",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_LISTENER",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_locks",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "LOCK_NAME",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_paused_trigger_grps",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_GROUP",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_scheduler_listeners",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "SCHEDULER_LISTENER",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_scheduler_state",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "INSTANCE_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "LAST_CHECKIN_TIME",
+            "type": "BIGINT"
+          },
+          {
+            "name": "CHECKIN_INTERVAL",
+            "type": "BIGINT"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_simple_triggers",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "REPEAT_COUNT",
+            "type": "INT"
+          },
+          {
+            "name": "REPEAT_INTERVAL",
+            "type": "BIGINT"
+          },
+          {
+            "name": "TIMES_TRIGGERED",
+            "type": "INT"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_trigger_listeners",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_LISTENER",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "qrtz_triggers",
+        "columns": [
+          {
+            "name": "SCHED_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "JOB_GROUP",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "DESCRIPTION",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "NEXT_FIRE_TIME",
+            "type": "BIGINT"
+          },
+          {
+            "name": "PREV_FIRE_TIME",
+            "type": "BIGINT"
+          },
+          {
+            "name": "PRIORITY",
+            "type": "INT"
+          },
+          {
+            "name": "TRIGGER_STATE",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TRIGGER_TYPE",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "START_TIME",
+            "type": "BIGINT"
+          },
+          {
+            "name": "END_TIME",
+            "type": "BIGINT"
+          },
+          {
+            "name": "CALENDAR_NAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "MISFIRE_INSTR",
+            "type": "SMALLINT"
+          },
+          {
+            "name": "JOB_DATA",
+            "type": "BLOB"
+          }
+        ]
+      }
+    ]
+  },
   "schema1": {
     "tables": [
       {
@@ -90,6 +1148,284 @@
           {
             "name": "salary_date",
             "type": "DATE"
+          }
+        ]
+      }
+    ]
+  },
+  "student": {
+    "tables": [
+      {
+        "name": "acl_class",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "class",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "acl_entry",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "acl_object_identity",
+            "type": "BIGINT"
+          },
+          {
+            "name": "ace_order",
+            "type": "INT"
+          },
+          {
+            "name": "sid",
+            "type": "BIGINT"
+          },
+          {
+            "name": "mask",
+            "type": "INT"
+          },
+          {
+            "name": "granting",
+            "type": "TINYINT"
+          },
+          {
+            "name": "audit_success",
+            "type": "TINYINT"
+          },
+          {
+            "name": "audit_failure",
+            "type": "TINYINT"
+          }
+        ]
+      },
+      {
+        "name": "acl_object_identity",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "object_id_class",
+            "type": "BIGINT"
+          },
+          {
+            "name": "object_id_identity",
+            "type": "BIGINT"
+          },
+          {
+            "name": "parent_object",
+            "type": "BIGINT"
+          },
+          {
+            "name": "owner_sid",
+            "type": "BIGINT"
+          },
+          {
+            "name": "entries_inheriting",
+            "type": "TINYINT"
+          }
+        ]
+      },
+      {
+        "name": "acl_sid",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "principal",
+            "type": "TINYINT"
+          },
+          {
+            "name": "sid",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "authorities",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "authority",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "user_id",
+            "type": "BIGINT"
+          }
+        ]
+      },
+      {
+        "name": "books",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "isbn",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "name",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "databasechangelog",
+        "columns": [
+          {
+            "name": "ID",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "AUTHOR",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "FILENAME",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "DATEEXECUTED",
+            "type": "DATETIME"
+          },
+          {
+            "name": "ORDEREXECUTED",
+            "type": "INT"
+          },
+          {
+            "name": "EXECTYPE",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "MD5SUM",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "DESCRIPTION",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "COMMENTS",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "TAG",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "LIQUIBASE",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "CONTEXTS",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "LABELS",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "DEPLOYMENT_ID",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "databasechangeloglock",
+        "columns": [
+          {
+            "name": "ID",
+            "type": "INT"
+          },
+          {
+            "name": "LOCKED",
+            "type": "TINYINT"
+          },
+          {
+            "name": "LOCKGRANTED",
+            "type": "DATETIME"
+          },
+          {
+            "name": "LOCKEDBY",
+            "type": "VARCHAR"
+          }
+        ]
+      },
+      {
+        "name": "refresh_tokens",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "valid",
+            "type": "BIT"
+          },
+          {
+            "name": "token",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "username",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "eat",
+            "type": "TIMESTAMP"
+          },
+          {
+            "name": "iat",
+            "type": "TIMESTAMP"
+          }
+        ]
+      },
+      {
+        "name": "users",
+        "columns": [
+          {
+            "name": "id",
+            "type": "BIGINT"
+          },
+          {
+            "name": "enabled",
+            "type": "BIT"
+          },
+          {
+            "name": "credentials_non_expired",
+            "type": "BIT"
+          },
+          {
+            "name": "account_non_locked",
+            "type": "BIT"
+          },
+          {
+            "name": "account_non_expired",
+            "type": "BIT"
+          },
+          {
+            "name": "password",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "username",
+            "type": "VARCHAR"
           }
         ]
       }
