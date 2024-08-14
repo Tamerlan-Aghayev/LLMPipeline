@@ -1,0 +1,9 @@
+mysql:
+  host: "localhost"
+  user: "root"
+  password: "Tar.32004"
+google:
+  api_key: "AIzaSyCzjl6vtHtg0Ey9qXY8x7AzWWaEBV7ncbs"
+schemas_to_extract:
+  - "schema1"
+  - "schema2"

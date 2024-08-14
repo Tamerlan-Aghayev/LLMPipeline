@@ -1,0 +1,98 @@
+{
+  "schema1": {
+    "tables": [
+      {
+        "name": "orders",
+        "columns": [
+          {
+            "name": "id",
+            "type": "INT"
+          },
+          {
+            "name": "user_id",
+            "type": "INT"
+          },
+          {
+            "name": "product_name",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "quantity",
+            "type": "INT"
+          },
+          {
+            "name": "order_date",
+            "type": "DATE"
+          }
+        ]
+      },
+      {
+        "name": "users",
+        "columns": [
+          {
+            "name": "id",
+            "type": "INT"
+          },
+          {
+            "name": "username",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "email",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "created_at",
+            "type": "TIMESTAMP"
+          }
+        ]
+      }
+    ]
+  },
+  "schema2": {
+    "tables": [
+      {
+        "name": "employees",
+        "columns": [
+          {
+            "name": "id",
+            "type": "INT"
+          },
+          {
+            "name": "name",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "position",
+            "type": "VARCHAR"
+          },
+          {
+            "name": "hire_date",
+            "type": "DATE"
+          }
+        ]
+      },
+      {
+        "name": "salaries",
+        "columns": [
+          {
+            "name": "id",
+            "type": "INT"
+          },
+          {
+            "name": "employee_id",
+            "type": "INT"
+          },
+          {
+            "name": "salary",
+            "type": "DECIMAL"
+          },
+          {
+            "name": "salary_date",
+            "type": "DATE"
+          }
+        ]
+      }
+    ]
+  }
+}
