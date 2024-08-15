@@ -1,8 +1,5 @@
 import json
 import google.generativeai as genai
-from dotenv import load_dotenv
-
-load_dotenv()
 
 class QueryGenerator:
     def __init__(self, api_key):
@@ -26,7 +23,6 @@ class QueryGenerator:
 
                     """
 
-        print(prompt)
         response = self.model.generate_content([prompt])
         return response.text.strip()
     
