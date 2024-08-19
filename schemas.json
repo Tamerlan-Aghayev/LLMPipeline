@@ -1,95 +1,256 @@
 {
-  "schema1": {
+  "hr": {
     "tables": [
       {
-        "name": "orders",
+        "name": "departments",
         "columns": [
           {
-            "name": "id",
-            "type": "INT"
+            "name": "department_id",
+            "type": "INT",
+            "key": "PRI"
           },
           {
-            "name": "user_id",
-            "type": "INT"
+            "name": "department_name",
+            "type": "VARCHAR",
+            "key": ""
+          }
+        ],
+        "foreign_keys": []
+      },
+      {
+        "name": "employees",
+        "columns": [
+          {
+            "name": "employee_id",
+            "type": "INT",
+            "key": "PRI"
           },
           {
-            "name": "product_name",
-            "type": "VARCHAR"
+            "name": "first_name",
+            "type": "VARCHAR",
+            "key": ""
           },
           {
-            "name": "quantity",
-            "type": "INT"
+            "name": "last_name",
+            "type": "VARCHAR",
+            "key": ""
           },
           {
-            "name": "order_date",
-            "type": "DATE"
+            "name": "department_id",
+            "type": "INT",
+            "key": "MUL"
+          },
+          {
+            "name": "date_of_joining",
+            "type": "DATE",
+            "key": ""
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "department_id",
+            "referenced_table": "departments",
+            "referenced_column": "department_id"
           }
         ]
       },
       {
-        "name": "users",
+        "name": "jobtitles",
         "columns": [
           {
-            "name": "id",
-            "type": "INT"
+            "name": "job_id",
+            "type": "INT",
+            "key": "PRI"
           },
           {
-            "name": "username",
-            "type": "VARCHAR"
+            "name": "job_title",
+            "type": "VARCHAR",
+            "key": ""
           },
           {
-            "name": "email",
-            "type": "VARCHAR"
-          },
+            "name": "employee_id",
+            "type": "INT",
+            "key": "MUL"
+          }
+        ],
+        "foreign_keys": [
           {
-            "name": "created_at",
-            "type": "TIMESTAMP"
+            "column": "employee_id",
+            "referenced_table": "employees",
+            "referenced_column": "employee_id"
           }
         ]
       }
     ]
   },
-  "schema2": {
+  "finance": {
     "tables": [
+      {
+        "name": "departments",
+        "columns": [
+          {
+            "name": "department_id",
+            "type": "INT",
+            "key": "PRI"
+          },
+          {
+            "name": "department_name",
+            "type": "VARCHAR",
+            "key": ""
+          }
+        ],
+        "foreign_keys": []
+      },
       {
         "name": "employees",
         "columns": [
           {
-            "name": "id",
-            "type": "INT"
+            "name": "employee_id",
+            "type": "INT",
+            "key": "PRI"
           },
           {
-            "name": "name",
-            "type": "VARCHAR"
+            "name": "first_name",
+            "type": "VARCHAR",
+            "key": ""
           },
           {
-            "name": "position",
-            "type": "VARCHAR"
+            "name": "last_name",
+            "type": "VARCHAR",
+            "key": ""
           },
           {
-            "name": "hire_date",
-            "type": "DATE"
+            "name": "department_id",
+            "type": "INT",
+            "key": "MUL"
+          },
+          {
+            "name": "salary",
+            "type": "DECIMAL",
+            "key": ""
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "department_id",
+            "referenced_table": "departments",
+            "referenced_column": "department_id"
           }
         ]
       },
       {
-        "name": "salaries",
+        "name": "payments",
         "columns": [
           {
-            "name": "id",
-            "type": "INT"
+            "name": "payment_id",
+            "type": "INT",
+            "key": "PRI"
           },
           {
             "name": "employee_id",
-            "type": "INT"
+            "type": "INT",
+            "key": "MUL"
+          },
+          {
+            "name": "payment_date",
+            "type": "DATE",
+            "key": ""
+          },
+          {
+            "name": "amount",
+            "type": "DECIMAL",
+            "key": ""
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "employee_id",
+            "referenced_table": "employees",
+            "referenced_column": "employee_id"
+          }
+        ]
+      }
+    ]
+  },
+  "company": {
+    "tables": [
+      {
+        "name": "departments",
+        "columns": [
+          {
+            "name": "department_id",
+            "type": "INT",
+            "key": "PRI"
+          },
+          {
+            "name": "department_name",
+            "type": "VARCHAR",
+            "key": ""
+          }
+        ],
+        "foreign_keys": []
+      },
+      {
+        "name": "employees",
+        "columns": [
+          {
+            "name": "employee_id",
+            "type": "INT",
+            "key": "PRI"
+          },
+          {
+            "name": "first_name",
+            "type": "VARCHAR",
+            "key": ""
+          },
+          {
+            "name": "last_name",
+            "type": "VARCHAR",
+            "key": ""
+          },
+          {
+            "name": "department_id",
+            "type": "INT",
+            "key": "MUL"
           },
           {
             "name": "salary",
-            "type": "DECIMAL"
+            "type": "DECIMAL",
+            "key": ""
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "department_id",
+            "referenced_table": "departments",
+            "referenced_column": "department_id"
+          }
+        ]
+      },
+      {
+        "name": "projects",
+        "columns": [
+          {
+            "name": "project_id",
+            "type": "INT",
+            "key": "PRI"
           },
           {
-            "name": "salary_date",
-            "type": "DATE"
+            "name": "project_name",
+            "type": "VARCHAR",
+            "key": ""
+          },
+          {
+            "name": "department_id",
+            "type": "INT",
+            "key": "MUL"
+          }
+        ],
+        "foreign_keys": [
+          {
+            "column": "department_id",
+            "referenced_table": "departments",
+            "referenced_column": "department_id"
           }
         ]
       }

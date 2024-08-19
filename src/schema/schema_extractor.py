@@ -38,10 +38,33 @@ class SchemaExtractor:
                     "columns": [
                         {
                             "name": column[0],
-                            "type": column[1].split('(')[0].upper()
+                            "type": column[1].split('(')[0].upper(),
+                            "key": column[3]
                         } for column in columns
-                    ]
+                    ],
+                    "foreign_keys": []
                 }
+
+                cursor.execute(f"""
+                    SELECT 
+                        COLUMN_NAME,
+                        REFERENCED_TABLE_NAME,
+                        REFERENCED_COLUMN_NAME
+                    FROM
+                        INFORMATION_SCHEMA.KEY_COLUMN_USAGE
+                    WHERE
+                        TABLE_SCHEMA = '{schema_name}'
+                        AND TABLE_NAME = '{table_name}'
+                        AND REFERENCED_TABLE_NAME IS NOT NULL
+                """)
+                foreign_keys = cursor.fetchall()
+
+                for fk in foreign_keys:
+                    table_schema["foreign_keys"].append({
+                        "column": fk[0],
+                        "referenced_table": fk[1],
+                        "referenced_column": fk[2]
+                    })
 
                 schema["tables"].append(table_schema)
 
@@ -55,3 +78,8 @@ class SchemaExtractor:
     def save_schemas(self, schemas, filename):
         with open(filename, 'w') as f:
             json.dump(schemas, f, indent=2)
+
+    def read_file_content(file_path):
+        with open(file_path, 'r') as file:
+            content = file.read()
+        return content.replace('\n', '')

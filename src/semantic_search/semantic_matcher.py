@@ -15,11 +15,9 @@ class SemanticMatcher:
 
         for schema_name, schema in all_schemas.items():
             for table in schema['tables']:
-                # Encode table
                 table_embeddings.append(self.model.encode(f"{schema_name} {table['name']}", convert_to_tensor=True))
                 table_info.append((schema_name, table))
 
-                # Encode columns
                 for column in table['columns']:
                     column_embeddings.append(self.model.encode(f"{schema_name} {table['name']} {column['name']}", convert_to_tensor=True))
                     column_info.append((schema_name, table, column))
@@ -30,8 +28,8 @@ class SemanticMatcher:
         table_similarities = util.pytorch_cos_sim(query_embedding, table_embeddings)[0]
         column_similarities = util.pytorch_cos_sim(query_embedding, column_embeddings)[0]
 
-        top_tables = torch.topk(table_similarities, k=min(3, len(table_info)))
-        top_columns = torch.topk(column_similarities, k=min(5, len(column_info)))
+        top_tables = torch.topk(table_similarities, k=min(5, len(table_info)))
+        top_columns = torch.topk(column_similarities, k=min(10, len(column_info)))
 
         result = {
             "tables": [

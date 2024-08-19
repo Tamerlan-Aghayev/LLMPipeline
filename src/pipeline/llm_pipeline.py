@@ -13,7 +13,7 @@ class LLMPipeline:
             config['mysql']['password']
         )
         self.semantic_matcher = SemanticMatcher()
-        self.query_generator = QueryGenerator(config["google"]["api_key"])
+        self.query_generator = QueryGenerator(config["openai"]["api_key"])
         self.query_executor = QueryExecutor(
             config['mysql']['host'],
             config['mysql']['user'],

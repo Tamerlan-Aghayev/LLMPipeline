@@ -1,9 +1,10 @@
 mysql:
   host: "localhost"
-  user: "root"
-  password: "Tar.32004"
-google:
+  user: "user"
+  password: "password"
+openai:
   api_key: "api_key"
-schemas_to_extract: #optional, it is for specifying schemas for operation
-  - "schema1"
-  - "schema2"
+schemas_to_extract: 
+  - "hr"
+  - "finance"
+  - "company"

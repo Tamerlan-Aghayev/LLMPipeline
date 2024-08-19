@@ -1,48 +1,49 @@
 import json
-import google.generativeai as genai
+from openai import OpenAI
+from src.schema.schema_extractor import SchemaExtractor
 
 class QueryGenerator:
     def __init__(self, api_key):
-        genai.configure(api_key=api_key)
+        self.client = OpenAI(api_key=api_key)
         
-        self.model = genai.GenerativeModel('gemini-pro')
-
+        self.prompt = f'''You are a SQL Expert, and you need to create queries based on given prompt. There is a must-to-follow rules:
+                            1. Do not include any explanations, comments, or other symbols, especially symbols like ``` or ```sql.
+                            2. Return ONLY the SQL query, do not use formatting around.
+                            3. Ensure the query is syntactically correct and optimized.
+                            4. Use the most relevant schema, table, and column names from the provided details.
+                            5. Support complex queries including JOINs, subqueries, and aggregations as needed.
+                            6. For example, if there is a data to retrieve from a specific table, write Select * FROM schema_name.table_name
+                            
+                            Here is schema structure: {SchemaExtractor.read_file_content("schemas.json")}
+                            '''
     def generate_sql_query(self, user_query, semantic_results):
-        prompt = f"""Generate a SQL query for this user request: "{user_query}"
-
+        question = f"""Generate a SQL query for this user request: "{user_query}"
                     Use these schema details:
-                    {json.dumps(semantic_results, indent=2)}
-
-                    Rules:
-                    1. Return ONLY the SQL query.
-                    2. Ensure the query is syntactically correct and optimized.
-                    3. Use the most relevant schema, table, and column names from the provided details.
-                    4. Support complex queries including JOINs, subqueries, and aggregations as needed.
-                    5. Do not include any explanations, comments, or formatting symbols like ```.
-                    6. For example, if there is a data to retrieve from a specific table, write Select * FROM schema_name.table_name
-
+                    {json.dumps(semantic_results, indent=2)}                    
                     """
-
-        response = self.model.generate_content([prompt])
-        return response.text.strip()
-    
+        response = self.client.chat.completions.create(
+            model="gpt-4o-mini-2024-07-18",
+            messages=[
+                {"role": "system", "content": self.prompt},
+                {"role": "user", "content": question}
+            ]
+        )
+        return response.choices[0].message.content.strip()
 
     def correct_query(self, sql_query, error_message, semantic_results):
-        correction_prompt = f"""Correct this SQL query that produced an error:
+        question = f"""Correct this SQL query that produced an error:
 
                                 SQL Query: {sql_query}
                                 Error: {error_message}
                                 Use these schema details:
                                 {json.dumps(semantic_results, indent=2)}
-
-                                Rules:
-                                1. Return ONLY the corrected SQL query.
-                                2. Ensure the query is syntactically correct and resolves the error.
-                                3. Maintain the original query's intent.
-                                4. Do not include any explanations, comments, or formatting symbols like ```.
-                                5. For example, if there is a data to retrieve from a specific table, write Select * FROM schema_name.table_name
                                 """
 
-
-        response = self.model.generate_content([correction_prompt])
-        return response.text.strip()
+        response = self.client.chat.completions.create(
+            model="gpt-4o-mini-2024-07-18",
+            messages=[
+                {"role": "system", "content": self.prompt},
+                {"role": "user", "content": question}
+            ]
+        )
+        return response.choices[0].message.content.strip()
